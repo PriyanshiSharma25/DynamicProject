@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mysql.cj.protocol.Resultset;
+
 import in.co.rays.bean.Marksheet_bean;
 
 public class Marksheet_Model {
@@ -132,5 +134,25 @@ public class Marksheet_Model {
 			pk = rs.getInt(1);
 		}
 		return pk + 1;
+	}
+	public static Marksheet_bean Authenticate(int id, String name) throws Exception{
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/rays", "root", "root");
+		PreparedStatement ps = conn.prepareStatement("Select * from Marksheet where id =? and name = ?");
+		ps.setInt(1, id);
+		ps.setString(2, name);
+		ResultSet rs = ps.executeQuery();
+		Marksheet_bean bean = null;
+		while(rs.next()) {
+			bean = new Marksheet_bean();
+			bean.setId(rs.getInt(1));
+			bean.setName(rs.getString(2));
+			bean.setRollNo(rs.getInt(3));
+			bean.setPhysics(rs.getInt(4));
+			bean.setChemistry(rs.getInt(5));
+			bean.setMaths(rs.getInt(6));
+		}
+		return bean;
+	
 	}
 }

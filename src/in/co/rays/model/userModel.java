@@ -42,16 +42,17 @@ public class userModel {
 	}
 
 	public void update(userBean bean) throws Exception {
-		Class.forName("com.mysql.cj.jdbc.driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/rays", "root", "root");
 		PreparedStatement ps = conn.prepareStatement(
-				"update user set first_name = ?, last_name = ?, login_id = ?, password = ?, dob =?, address = ?,where id = ? ");
+				"update user set first_name = ?, last_name = ?, login_id = ?, password = ?, dob = ?, address = ? where id = ? ");
 		ps.setString(1, bean.getFirstName());
 		ps.setString(2, bean.getLastName());
 		ps.setString(3, bean.getLoginId());
 		ps.setString(4, bean.getPassword());
 		ps.setDate(5, new java.sql.Date(bean.getDob().getTime()));
 		ps.setString(6, bean.getAddress());
+		ps.setInt(7, bean.getId());
 
 		int i = ps.executeUpdate();
 		System.out.println("Data updated = " + i);
@@ -81,8 +82,12 @@ public class userModel {
 	public List search(userBean bean, int pageNo, int pageSize) throws Exception {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/rays", "root", "root");
-		StringBuffer sql = new StringBuffer("select * from marksheet where 1=1");
+		StringBuffer sql = new StringBuffer("select * from user where 1=1");
 		if (bean != null) {
+			if (bean.getFirstName() != null && bean.getFirstName().length() > 0) {
+
+				sql.append(" and first_name like '" + bean.getFirstName() + "%'");
+		}
 			if (bean.getDob() != null && bean.getDob().getTime() > 0) {
 				sql.append(" and dob like '" + new java.sql.Date(bean.getDob().getTime()) + "%'");
 			}
@@ -151,6 +156,17 @@ public class userModel {
 			bean.setAddress(rs.getString(7));
 		}
 		return bean;
+	}
+	public void delete(int id) throws Exception {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/rays", "root", "root");
+		PreparedStatement ps = conn.prepareStatement("delete from user where id = ?");
+		ps.setInt(1, id);
+		
+
+		int i = ps.executeUpdate();
+		System.out.println("Data deleted =" + i);
+
 	}
 
 }

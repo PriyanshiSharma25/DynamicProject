@@ -6,11 +6,29 @@
 <meta charset="ISO-8859-1">
 <title></title>
 </head>
-<body style ="background-color: aqua;">
+<body style ="background-color:yellow;">
   <%@ include file="Header.jsp"%>
 
 
-	<h1>Welcome View</h1>
-
+	<h1>Welcome..!!!!</h1>
+	<img src="https://media.tenor.com/4P02Cdfd26MAAAAj/baby-yoda-so-cute.gif">
+	 <br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+	<h4>
+<%@include file="Footer.jsp" %>
+</h4>
 </body>
 </html>

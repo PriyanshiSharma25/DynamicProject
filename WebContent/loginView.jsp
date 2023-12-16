@@ -7,9 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body >
-
+      
 	<%
-		String msg = (String) request.getAttribute("msg");
+		String msg = (String)request.getAttribute("msg");
+	    String uri = (String) request.getAttribute("uri");
 	%>
 
 	<form action="LoginCtl" method="post">
@@ -20,11 +21,15 @@
 				<%
 					if (msg != null) {
 				%>
-				<%=msg%>
-				<%
+			<h2>	:/ </h2>
+			
+	        <%=msg %>	<%
+				
 					}
 				%>
-			</tr>
+			</tr><h5>
+			<img src="https://media.tenor.com/QNP6E3bnOiUAAAAj/long-livethe-blob-monkey.gif">
+			</h5>
 			<tr>
 				<th>LoginId :</th>
 				<td><input type="text" name="loginId"></td>
@@ -37,10 +42,37 @@
 			<tr>
 				<th></th>
 				<td><input type="submit" name="operation" value="SignIn">
-					<input type="submit" name="operation" value="SignUp"></td>
+					<input type="submit" name="operation" value="SignUp">
+					<input type="submit" name="operation" value="ForgetPassword"></td>
 			</tr>
+			  
 		</table>
+		<input type="hidden" name="uri" value="<%=uri%>">
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		
+		
 	</form>
-
+	
+	
+	
 </body>
+<footer> 
+ <%@include file="Footer.jsp" %>
+
+
+</footer>
+
 </html>

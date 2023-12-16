@@ -7,7 +7,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body style = "background-color:olive; ">
+<body style = "background-color:grey; ">
 <%
  userBean bean = (userBean)session.getAttribute("user");
 %>
@@ -17,7 +17,7 @@ if(bean != null){
     <h3>
       Hi,
 		<%=bean.getFirstName()%></h3>
-		<a href="UserListCtl" >UserList</a>
+		<a href="UserListCtl.do" >UserList</a>
 		<a href="LoginCtl?operation=logout" >Logout</a>
 	<%
 		} else {

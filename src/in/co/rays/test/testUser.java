@@ -19,7 +19,7 @@ import in.co.rays.model.userModel;
 			String dob = "2003-03-25" ;
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			userBean bean = new userBean();
-			 //bean.setName("a");
+			//bean.setFirstName("p");
 			bean.setDob(sdf.parse(dob));
 
 			userModel model = new userModel();
@@ -34,13 +34,18 @@ import in.co.rays.model.userModel;
 				System.out.print("\t" + bean.getLoginId());
 				System.out.print("\t" + bean.getPassword());
 				System.out.println("\t" + bean.getDob());
-				
+				System.out.println("\t" + bean.getAddress());
 
 			}
 		
 	}
 
-	private static void testUpdate() {
+	private static void testUpdate() throws Exception {
+		userBean bean = new userBean();
+		bean.setFirstName("hiiiiii");
+		bean.setId(5);
+		userModel mdl = new userModel();
+		mdl.update(bean);
 		
 		
 	}
@@ -50,10 +55,10 @@ import in.co.rays.model.userModel;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		userBean bean = new userBean();
 		bean.setId(3);
-		bean.setFirstName("Sunayna");
-		bean.setLastName("Sahu");
-		bean.setLoginId("SunaynaSahu100@gmail.com");
-		bean.setPassword("87654321");
+		bean.setFirstName("hii");
+		bean.setLastName("S");
+		bean.setLoginId("S@gmail.com");
+		bean.setPassword("1234");
 		bean.setDob(sdf.parse(dob));
 		bean.setAddress("Indore");
 		userModel model = new userModel();
